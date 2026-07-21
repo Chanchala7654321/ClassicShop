@@ -1,0 +1,75 @@
+/* ── Footer ── */
+.footer {
+  background: #1a1a2e;
+  color: #ccc;
+  padding: 50px 40px 0;
+  font-size: 14px;
+}
+
+.footer-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px;
+  justify-content: space-between;
+  padding-bottom: 40px;
+  border-bottom: 1px solid #2a2a4a;
+}
+
+/* Brand block */
+.footer-brand {
+  max-width: 260px;
+}
+
+.footer-logo {
+  color: #f5a623;
+  font-size: 24px;
+  font-weight: 800;
+  margin-bottom: 12px;
+  letter-spacing: 1px;
+}
+
+.footer-brand p {
+  line-height: 1.7;
+  color: #888;
+}
+
+/* Sections */
+.footer-section h4 {
+  color: white;
+  font-size: 15px;
+  font-weight: 700;
+  margin-bottom: 16px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.footer-section ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.footer-section ul li a {
+  color: #888;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.footer-section ul li a:hover {
+  color: #f5a623;
+}
+
+/* Contact list (no links) */
+.footer-contact li {
+  color: #888;
+  line-height: 1.8;
+}
+
+/* Bottom bar */
+.footer-bottom {
+  text-align: center;
+  padding: 18px 0;
+  color: #555;
+  font-size: 13px;
+}
