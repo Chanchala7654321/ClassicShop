@@ -1,4 +1,7 @@
-/* ── Footer ── */
+/* ===========================
+   Footer
+=========================== */
+
 .footer {
   background: #1a1a2e;
   color: #ccc;
@@ -6,70 +9,248 @@
   font-size: 14px;
 }
 
+/* ===========================
+   Container
+=========================== */
+
 .footer-container {
   display: flex;
   flex-wrap: wrap;
-  gap: 40px;
   justify-content: space-between;
+  gap: 40px;
   padding-bottom: 40px;
   border-bottom: 1px solid #2a2a4a;
 }
 
-/* Brand block */
+/* ===========================
+   Brand
+=========================== */
+
 .footer-brand {
-  max-width: 260px;
+  max-width: 300px;
+}
+
+.brand-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 15px;
+}
+
+.brand-icon {
+  width: 42px;
+  height: 42px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #2563eb, #0ea5e9);
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 20px;
+  font-weight: bold;
 }
 
 .footer-logo {
-  color: #f5a623;
-  font-size: 24px;
+  color: white;
+  font-size: 34px;
   font-weight: 800;
-  margin-bottom: 12px;
   letter-spacing: 1px;
 }
 
 .footer-brand p {
-  line-height: 1.7;
-  color: #888;
+  margin-top: 15px;
+  line-height: 1.8;
+  color: #9ca3af;
 }
 
-/* Sections */
+/* ===========================
+   Social Icons
+=========================== */
+
+.social-icons {
+  display: flex;
+  gap: 15px;
+  margin-top: 25px;
+}
+
+.social-icons a {
+  width: 42px;
+  height: 42px;
+  border: 1px solid #2a2a4a;
+  border-radius: 50%;
+  color: #ccc;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  text-decoration: none;
+  transition: all .3s ease;
+}
+
+.social-icons a:hover {
+  background: #f5a623;
+  border-color: #f5a623;
+  color: white;
+  transform: translateY(-4px);
+}
+
+/* ===========================
+   Footer Sections
+=========================== */
+
 .footer-section h4 {
   color: white;
-  font-size: 15px;
+  font-size: 16px;
   font-weight: 700;
-  margin-bottom: 16px;
+  margin-bottom: 20px;
   text-transform: uppercase;
-  letter-spacing: 0.5px;
+  letter-spacing: .5px;
 }
 
 .footer-section ul {
   list-style: none;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
+  padding: 0;
 }
 
-.footer-section ul li a {
-  color: #888;
+.footer-section li {
+  margin-bottom: 12px;
+}
+
+.footer-section a {
+  color: #9ca3af;
   text-decoration: none;
-  transition: color 0.2s;
+  transition: all .3s ease;
 }
 
-.footer-section ul li a:hover {
+.footer-section a:hover {
   color: #f5a623;
+  padding-left: 6px;
 }
 
-/* Contact list (no links) */
+/* ===========================
+   Contact
+=========================== */
+
 .footer-contact li {
-  color: #888;
-  line-height: 1.8;
+  color: #9ca3af;
+  line-height: 2;
 }
 
-/* Bottom bar */
+/* ===========================
+   Bottom
+=========================== */
+
 .footer-bottom {
-  text-align: center;
-  padding: 18px 0;
-  color: #555;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 22px 0;
+}
+
+.footer-bottom p {
+  color: #777;
   font-size: 13px;
 }
+
+/* ===========================
+   Payment Icons
+=========================== */
+
+.payment-icons {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  font-size: 32px;
+}
+
+/* Smooth animation */
+
+.payment-icons svg {
+  transition: all .3s ease;
+  cursor: pointer;
+}
+
+/* Visa */
+
+.payment-icons svg:nth-child(1) {
+  color: #1A1F71;
+}
+
+/* Mastercard */
+
+.payment-icons svg:nth-child(2) {
+  color: #EB001B;
+}
+
+/* PayPal */
+
+.payment-icons svg:nth-child(3) {
+  color: #0070BA;
+}
+
+/* Apple Pay */
+
+.payment-icons svg:nth-child(4) {
+  color: #ffffff;
+}
+
+/* Google Pay */
+
+.payment-icons svg:nth-child(5) {
+  color: #4285F4;
+}
+
+.payment-icons svg:hover {
+  transform: translateY(-5px) scale(1.15);
+  filter: brightness(1.2);
+}
+
+/* ===========================
+   Responsive
+=========================== */
+
+@media (max-width: 992px) {
+
+  .footer {
+    padding: 45px 25px 0;
+  }
+
+  .footer-container {
+    gap: 35px;
+  }
+
+}
+
+@media (max-width: 768px) {
+
+  .footer-container {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .footer-brand {
+    max-width: 100%;
+  }
+
+  .brand-header {
+    justify-content: center;
+  }
+
+  .social-icons {
+    justify-content: center;
+  }
+
+  .footer-bottom {
+    flex-direction: column;
+    gap: 20px;
+    text-align: center;
+  }
+
+  .payment-icons {
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+}
+
+

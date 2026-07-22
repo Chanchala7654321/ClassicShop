@@ -1,10 +1,17 @@
-
-
+import { useLoaderData } from "react-router-dom";
+import Hero from "../components/homes/Hero";
+import ServiceFeatures from "../components/homes/ServiceFeatures";
+import FeaturedCategories from "../components/homes/FeaturedCategories";
+import Products from "../components/product/Products";
 
 function Home() {
+  
   return (
     <div>
-      <h1>Home page</h1>
+      <Hero />
+      <ServiceFeatures />
+      <FeaturedCategories />
+      <Products />
     </div>
   );
 }
