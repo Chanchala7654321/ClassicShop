@@ -19,6 +19,7 @@ import EditCategory from "../components/admin/EditCategory";
 import Profile from "../pages/Profile";
 import Cart from "../pages/Cart";
 import Wishlist from "../pages/Wishlist";
+import ProductDetails from "../pages/ProductDetails";
 
 // Routes
 import ProtectedRoute from "./ProtectedRoute";
@@ -120,6 +121,10 @@ const router = createBrowserRouter([
   {
     path: "wishlist",
     element: <Wishlist />,
+  },
+  {
+    path: "products/:id",
+    element: <ProductDetails />,
   },
 
   

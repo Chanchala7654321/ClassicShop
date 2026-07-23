@@ -60,6 +60,8 @@ function Navbar() {
           🛒
         </Link>
 
+        
+
         {!user ? (
           <Link to="/login" className="btn-login">
             Login
