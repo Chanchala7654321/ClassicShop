@@ -1,0 +1,38 @@
+.dashboard {
+    display: flex;
+  }
+  
+  .dashboard-content {
+    flex: 1;
+    padding: 30px;
+    background: #f5f7fa;
+  }
+  
+  .dashboard-content h1 {
+    margin-bottom: 30px;
+  }
+
+
+
+
+  .page-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:30px;
+}
+
+.add-category-btn{
+    background:#3b82f6;
+    color:white;
+    border:none;
+    padding:12px 20px;
+    border-radius:8px;
+    cursor:pointer;
+    font-size:16px;
+    font-weight:600;
+}
+
+.add-category-btn:hover{
+    background:#2563eb;
+}
