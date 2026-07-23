@@ -1,22 +1,28 @@
 import { createBrowserRouter } from "react-router-dom";
 
+// Layouts
 import PublicLayout from "../layouts/PublicLayout";
+
+// Public Pages
 import Home from "../pages/Home";
 import Products from "../pages/Products";
 import About from "../pages/About";
+import Login from "../pages/Login";
+
+// Admin Pages
+import Dashboard from "../admin/Dashboard";
 import ManageProducts from "../admin/ManageProducts";
 import AddProduct from "../admin/AddProduct";
 import EditProduct from "../admin/EditProduct";
 import Categories from "../admin/Categories";
 import EditCategory from "../components/admin/EditCategory";
-// import Contact from "../pages/Contact";
-import Login from "../pages/Login";
-// import Signup from "../pages/Signup";
-// import Cart from "../pages/Cart";
 
-import Dashboard from "../admin/Dashboard";  
+// Routes
+import ProtectedRoute from "./ProtectedRoute";
+import AdminRoute from "./AdminRoute";
 
 const router = createBrowserRouter([
+  // Public Routes
   {
     path: "/",
     element: <PublicLayout />,
@@ -40,32 +46,76 @@ const router = createBrowserRouter([
     ],
   },
 
-  // Admin Routes
+
+  // Admin Protected Routes
   {
     path: "/admin",
-    element: <Dashboard />,
-  },
-  {
-    path: "/admin/products",
-    element: <ManageProducts />,
-  },
-  {
-    path: "/admin/add-product",
-    element: <AddProduct />,
-  },
-  {
-    path: "/admin/edit-product/:id",
-    element: <EditProduct />,
-  },
-  {
-    path: "/admin/categories",
-    element: <Categories />,
-  },
-  {
-    path: "/admin/edit-category/:id",
-    element: <EditCategory />,
-  }
-]);
+    element: (
+      <AdminRoute>
+        <Dashboard />
+      </AdminRoute>
+    ),
 
+    children: [
+      {
+        path: "products",
+        element: (
+          <AdminRoute>
+            <ManageProducts />
+          </AdminRoute>
+        ),
+      },
+
+      {
+        path: "add-product",
+        element: (
+          <AdminRoute>
+            <AddProduct />
+          </AdminRoute>
+        ),
+      },
+
+      {
+        path: "edit-product/:id",
+        element: (
+          <AdminRoute>
+            <EditProduct />
+          </AdminRoute>
+        ),
+      },
+
+      {
+        path: "categories",
+        element: (
+          <AdminRoute>
+            <Categories />
+          </AdminRoute>
+        ),
+      },
+
+      {
+        path: "edit-category/:id",
+        element: (
+          <AdminRoute>
+            <EditCategory />
+          </AdminRoute>
+        ),
+      },
+    ],
+  },
+
+
+  // User Protected Routes Example
+
+  // {
+  //   path: "/profile",
+  //   element: (
+  //     <ProtectedRoute>
+  //       <Profile />
+  //     </ProtectedRoute>
+  //   ),
+  // },
+
+]);
 
 export default router;

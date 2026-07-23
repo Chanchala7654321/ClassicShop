@@ -1,18 +1,22 @@
 import Sidebar from "../components/admin/Sidebar";
 import DashboardCards from "../components/admin/DashboardCards";
 import "./Dashboard.css";
+import Navbar from "../components/common/Navbar";
 
 function Dashboard() {
   return (
-    <div className="dashboard">
-      <Sidebar />
+    <>
+      <Navbar />
+      <div className="dashboard">
+        <Sidebar />
 
-      <div className="dashboard-content">
-        <h1>Dashboard</h1>
+        <div className="dashboard-content">
+          <h1>Dashboard</h1>
 
-        <DashboardCards />
+          <DashboardCards />
+        </div>
       </div>
-    </div>
+    </>
   );
 }
 
