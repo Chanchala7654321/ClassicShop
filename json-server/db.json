@@ -4494,14 +4494,15 @@
     },
     {
       "id": "2",
-      "name": "Customer 2",
+      "name": "Customer 22",
       "email": "customer2@gmail.com",
       "password": "123456",
       "phone": "9876543202",
       "avatar": "https://i.pravatar.cc/150?u=2",
       "role": "customer",
       "isActive": true,
-      "createdAt": "2026-07-21T11:54:01.639461"
+      "createdAt": "2026-07-21T11:54:01.639461",
+      "city": ""
     },
     {
       "id": "3",
