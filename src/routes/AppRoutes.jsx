@@ -17,6 +17,7 @@ import EditProduct from "../admin/EditProduct";
 import Categories from "../admin/Categories";
 import EditCategory from "../components/admin/EditCategory";
 import Profile from "../pages/Profile";
+import Cart from "../pages/Cart";
 
 // Routes
 import ProtectedRoute from "./ProtectedRoute";
@@ -46,7 +47,6 @@ const router = createBrowserRouter([
       },
     ],
   },
-
 
   // Admin Protected Routes
   {
@@ -112,7 +112,12 @@ const router = createBrowserRouter([
       </ProtectedRoute>
     ),
   },
+  {
+    path: "cart",
+    element: <Cart />,
+  },
 
+  
 ]);
 
 export default router;
