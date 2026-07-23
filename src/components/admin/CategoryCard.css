@@ -1,0 +1,56 @@
+.category-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 25px;
+  }
+  
+  .category-card {
+    background: #141d2c;
+    border-radius: 15px;
+    padding: 20px;
+    color: white;
+    transition: 0.3s;
+  }
+  
+  .category-card:hover {
+    transform: translateY(-5px);
+  }
+  
+  .card-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+  
+  .card-top img {
+    width: 70px;
+    height: 70px;
+    object-fit: contain;
+    border-radius: 50%;
+    background: #1e293b;
+    padding: 10px;
+  }
+  
+  .actions {
+    display: flex;
+    gap: 10px;
+  }
+  
+  .edit-btn,
+  .delete-btn {
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    font-size: 18px;
+  }
+  
+  .category-card h3 {
+    margin-top: 20px;
+    font-size: 22px;
+  }
+  
+  .category-card p {
+    margin-top: 8px;
+    color: #b5b5b5;
+    font-size: 15px;
+  }

@@ -1,0 +1,25 @@
+.category-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+  }
+  
+  .category-header p {
+    color: gray;
+  }
+  
+  .add-category-btn {
+    background: #2563eb;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 15px;
+    font-weight: 600;
+  }
+  
+  .add-category-btn:hover {
+    background: #1d4ed8;
+  }

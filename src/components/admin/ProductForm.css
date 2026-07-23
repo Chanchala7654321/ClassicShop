@@ -1,0 +1,31 @@
+.product-form {
+    max-width: 700px;
+    margin: auto;
+    background: white;
+    padding: 25px;
+    border-radius: 10px;
+    display: grid;
+    gap: 18px;
+    box-shadow: 0 5px 15px rgba(0,0,0,.08);
+  }
+  
+  .product-form input {
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 16px;
+  }
+  
+  .product-form button {
+    padding: 14px;
+    border: none;
+    background: #2563eb;
+    color: white;
+    font-size: 17px;
+    border-radius: 6px;
+    cursor: pointer;
+  }
+  
+  .product-form button:hover {
+    background: #1d4ed8;
+  }
