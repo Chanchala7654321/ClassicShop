@@ -18,6 +18,7 @@ import Categories from "../admin/Categories";
 import EditCategory from "../components/admin/EditCategory";
 import Profile from "../pages/Profile";
 import Cart from "../pages/Cart";
+import Wishlist from "../pages/Wishlist";
 
 // Routes
 import ProtectedRoute from "./ProtectedRoute";
@@ -115,6 +116,10 @@ const router = createBrowserRouter([
   {
     path: "cart",
     element: <Cart />,
+  },
+  {
+    path: "wishlist",
+    element: <Wishlist />,
   },
 
   

@@ -5,7 +5,7 @@ import {
   updateCart,
   deleteCartItem,
 } from "../../api/cartService";
-import "./Cart.css";
+// import "./Cart.css";
 
 function CartItem() {
   const [cart, setCart] = useState([]);
