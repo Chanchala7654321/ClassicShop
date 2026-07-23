@@ -103,3 +103,23 @@
   .cart-btn:hover {
     background: #1d4ed8;
   }
+
+
+  .product-title {
+    text-decoration: none;
+    color: inherit;
+  }
+  
+  .product-title:hover h3 {
+    color: #2563eb;
+  }
+  
+  .view-btn {
+    width: 100%;
+    margin-top: 10px;
+  }
+  
+  .cart-btn {
+    width: 100%;
+    margin-top: 10px;
+  }
