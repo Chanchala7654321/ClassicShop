@@ -16,6 +16,7 @@ import AddProduct from "../admin/AddProduct";
 import EditProduct from "../admin/EditProduct";
 import Categories from "../admin/Categories";
 import EditCategory from "../components/admin/EditCategory";
+import Profile from "../pages/Profile";
 
 // Routes
 import ProtectedRoute from "./ProtectedRoute";
@@ -103,18 +104,14 @@ const router = createBrowserRouter([
       },
     ],
   },
-
-
-  // User Protected Routes Example
-
-  // {
-  //   path: "/profile",
-  //   element: (
-  //     <ProtectedRoute>
-  //       <Profile />
-  //     </ProtectedRoute>
-  //   ),
-  // },
+  {
+    path: "profile",
+    element: (
+      <ProtectedRoute>
+        <Profile />
+      </ProtectedRoute>
+    ),
+  },
 
 ]);
 
