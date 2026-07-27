@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { getCategories } from "../../api/categoryService";
 import "./FeaturedCategories.css";
 
-function FeaturedCategories() {
+function FeaturedCategories({ onSelectCategory, selectedCategory }) {
   const [categories, setCategories] = useState([]);
   const [startIndex, setStartIndex] = useState(0);
 
@@ -35,6 +35,14 @@ function FeaturedCategories() {
     }
   };
 
+  const handleCategoryClick = (categoryName) => {
+    if (selectedCategory === categoryName) {
+      onSelectCategory(null); // Deselect if already selected
+    } else {
+      onSelectCategory(categoryName);
+    }
+  };
+
   return (
     <section className="featured-categories">
       <div className="heading">
@@ -50,7 +58,12 @@ function FeaturedCategories() {
           {categories
             .slice(startIndex, startIndex + 4)
             .map((category) => (
-              <div className="category-card" key={category.id}>
+              <div 
+                className={`category-card ${selectedCategory === category.name ? 'selected' : ''}`} 
+                key={category.id}
+                onClick={() => handleCategoryClick(category.name)}
+                style={{ cursor: 'pointer', border: selectedCategory === category.name ? '2px solid #000' : 'none' }}
+              >
                 <img src={category.image} alt={category.name} />
 
                 <h3>{category.name}</h3>

@@ -1,9 +1,9 @@
 import ProductGrid from "./ProductGrid";
 
-function Products() {
+function Products({ selectedCategory }) {
   return (
     <>
-      <ProductGrid title="All Products" />
+      <ProductGrid title="All Products" selectedCategory={selectedCategory} />
     </>
   );
 }

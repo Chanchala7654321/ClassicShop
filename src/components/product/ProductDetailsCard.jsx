@@ -1,13 +1,12 @@
 import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { getProductById } from "../../api/productService";
+import { useShop } from "../../context/ShopContext";
 import "./ProductDetailsCard.css";
-import { addToCart } from "../../api/cartService";
-import { addToWishlist } from "../../api/wishlistService";
-import { useAuth } from "../../context/AuthContext";
 
 function ProductDetailsCard() {
   const { id } = useParams();
+  const { addToCart, toggleWishlist, wishlist } = useShop();
 
   const [product, setProduct] = useState(null);
 
@@ -23,6 +22,8 @@ function ProductDetailsCard() {
   if (!product) {
     return <h2>Loading...</h2>;
   }
+
+  const isWishlisted = wishlist.some((item) => item.id === product.id);
 
   return (
     <div className="details-page">
@@ -72,12 +73,15 @@ function ProductDetailsCard() {
 
           <div className="buttons">
 
-            <button className="cart-btn">
+            <button className="cart-btn" onClick={() => addToCart(product)}>
               🛒 Add To Cart
             </button>
 
-            <button className="wish-btn">
-              ❤️ Add To Wishlist
+            <button 
+              className={`wish-btn ${isWishlisted ? 'active' : ''}`}
+              onClick={() => toggleWishlist(product)}
+            >
+              {isWishlisted ? '❤️ Remove From Wishlist' : '💙 Add To Wishlist'}
             </button>
 
           </div>

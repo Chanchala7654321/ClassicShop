@@ -39,14 +39,14 @@ function CategoryCard() {
 
             <div className="actions">
               <Link to={`/admin/edit-category/${category.id}`}>
-                <button className="edit-btn">✏️</button>
+                <button className="edit-btn">Update</button>
               </Link>
 
               <button
                 className="delete-btn"
                 onClick={() => handleDelete(category.id)}
               >
-                🗑️
+                Delete
               </button>
             </div>
           </div>

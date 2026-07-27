@@ -1,7 +1,17 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useAuth } from "../../context/AuthContext";
 import "./Sidebar.css";
 
 function Sidebar() {
+  const { logout } = useAuth();
+  const navigate = useNavigate();
+
+  const handleLogout = (e) => {
+    e.preventDefault();
+    logout();
+    navigate("/login");
+  };
+
   return (
     <aside className="sidebar">
 
@@ -32,9 +42,9 @@ function Sidebar() {
           🏠 Back to Store
         </Link>
 
-        <Link to="/login">
+        <a href="/login" onClick={handleLogout}>
           🚪 Logout
-        </Link>
+        </a>
 
       </nav>
 

@@ -1,45 +1,13 @@
-import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import {
-  getWishlist,
-  removeFromWishlist,
-} from "../../api/wishlistService";
-import { addToCart } from "../../api/cartService";
+import { useShop } from "../../context/ShopContext";
 import "./WishlistCard.css";
 
 function WishlistCard() {
-  const [wishlist, setWishlist] = useState([]);
+  const { wishlist, toggleWishlist, addToCart } = useShop();
 
-  const fetchWishlist = async () => {
-    const data = await getWishlist();
-    setWishlist(data);
-  };
-
-  useEffect(() => {
-    fetchWishlist();
-  }, []);
-
-  const handleRemove = async (id) => {
-    await removeFromWishlist(id);
-    fetchWishlist();
-  };
-
-  const handleMoveToCart = async (item) => {
-    const cartItem = {
-      userId: item.userId,
-      productId: item.productId,
-      title: item.title,
-      thumbnail: item.thumbnail,
-      price: item.price,
-      quantity: 1,
-    };
-
-    await addToCart(cartItem);
-    await removeFromWishlist(item.id);
-
-    fetchWishlist();
-
-    alert("Moved to Cart");
+  const handleMoveToCart = (item) => {
+    addToCart(item);
+    toggleWishlist(item); // removes it since it was already in wishlist
   };
 
   if (wishlist.length === 0) {
@@ -88,7 +56,7 @@ function WishlistCard() {
 
               <button
                 className="remove-btn"
-                onClick={() => handleRemove(item.id)}
+                onClick={() => toggleWishlist(item)}
               >
                 Remove
               </button>
