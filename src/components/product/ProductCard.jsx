@@ -1,17 +1,24 @@
 import { Link } from "react-router-dom";
+import { useShop } from "../../context/ShopContext";
 import "./ProductCard.css";
 
-function ProductCard({ product, handleAddToCart }) {
+function ProductCard({ product }) {
+  const { addToCart, toggleWishlist, wishlist } = useShop();
+
+  const isWishlisted = wishlist.some((item) => item.id === product.id);
+
   return (
     <div className="product-card">
 
       <div className="product-image">
 
-        <span className="discount">
-          -{product.discountPercentage}%
-        </span>
 
-        <button className="wishlist">❤</button>
+        <button 
+          className={`wishlist ${isWishlisted ? 'active' : ''}`}
+          onClick={() => toggleWishlist(product)}
+        >
+          {isWishlisted ? '❤️' : '💙'}
+        </button>
 
         <Link to={`/products/${product.id}`}>
           <img
@@ -43,13 +50,7 @@ function ProductCard({ product, handleAddToCart }) {
             ₹{product.price}
           </span>
 
-          <span className="old-price">
-            ₹
-            {Math.round(
-              product.price +
-                (product.price * product.discountPercentage) / 100
-            )}
-          </span>
+
 
         </div>
 
@@ -60,7 +61,7 @@ function ProductCard({ product, handleAddToCart }) {
         </Link>
 
         <button
-          onClick={() => handleAddToCart(product)}
+          onClick={() => addToCart(product)}
           className="cart-btn"
         >
           Add to Cart

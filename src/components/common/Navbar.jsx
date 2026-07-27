@@ -1,6 +1,14 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../../context/AuthContext";
 import { useState } from "react";
+import {
+  FaHeart,
+  FaShoppingCart,
+  FaUserCircle,
+  FaBoxOpen,
+  FaTachometerAlt,
+  FaSignOutAlt,
+} from "react-icons/fa";
 import "./Navbar.css";
 
 function Navbar() {
@@ -22,13 +30,6 @@ function Navbar() {
         ClassicShop
       </div>
 
-      {/* Search */}
-      <input
-        type="text"
-        placeholder="Search products..."
-        className="search"
-      />
-
       {/* Navigation */}
       <ul className="nav-links">
         <li>
@@ -37,10 +38,6 @@ function Navbar() {
 
         <li>
           <Link to="/products">Products</Link>
-        </li>
-
-        <li>
-          <Link to="/about">About</Link>
         </li>
 
         {user?.role === "admin" && (
@@ -53,14 +50,12 @@ function Navbar() {
       {/* Right Side */}
       <div className="nav-right">
         <Link to="/wishlist" className="icon">
-          ❤️
+          <FaHeart />
         </Link>
 
         <Link to="/cart" className="icon">
-          🛒
+          <FaShoppingCart />
         </Link>
-
-        
 
         {!user ? (
           <Link to="/login" className="btn-login">
@@ -77,9 +72,16 @@ function Navbar() {
 
             {showMenu && (
               <div className="profile-menu">
-                <h4>{user.name}</h4>
+                <div className="profile-header">
+                  <div className="profile-avatar">
+                    <FaUserCircle />
+                  </div>
 
-                <p>{user.email}</p>
+                  <div>
+                    <h4>{user.name}</h4>
+                    <p>{user.email}</p>
+                  </div>
+                </div>
 
                 <hr />
 
@@ -87,13 +89,15 @@ function Navbar() {
                   to="/profile"
                   onClick={() => setShowMenu(false)}
                 >
+                  <FaUserCircle />
                   My Profile
                 </Link>
 
                 <Link
-                  to="/orders"
+                  to="/cart"
                   onClick={() => setShowMenu(false)}
                 >
+                  <FaBoxOpen />
                   My Orders
                 </Link>
 
@@ -102,11 +106,13 @@ function Navbar() {
                     to="/admin"
                     onClick={() => setShowMenu(false)}
                   >
+                    <FaTachometerAlt />
                     Admin Dashboard
                   </Link>
                 )}
 
                 <button onClick={handleLogout}>
+                  <FaSignOutAlt />
                   Logout
                 </button>
               </div>

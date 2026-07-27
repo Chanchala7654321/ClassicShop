@@ -47,7 +47,7 @@ function ProductTable() {
   return (
     <div className="table-container">
       <table className="product-table">
-        <thead>
+        <thead className="table-header">
           <tr>
             <th>Image</th>
             <th>Product</th>
@@ -79,19 +79,22 @@ function ProductTable() {
 
               <td>{product.rating}</td>
 
-              <td>
-                <Link to={`/admin/edit-product/${product.id}`}>
-                  <button className="edit-btn">
-                    Edit
-                  </button>
-                </Link>
+              <td style={{ minWidth: "150px" }}>
+                <div style={{ display: "flex", gap: "10px", alignItems: "center" }}>
+                  <Link to={`/admin/edit-product/${product.id}`}>
+                    <button className="edit-btn" style={{ minWidth: "60px" }}>
+                      Edit
+                    </button>
+                  </Link>
 
-                <button
-                  className="delete-btn"
-                  onClick={() => handleDelete(product.id)}
-                >
-                  Delete
-                </button>
+                  <button
+                    className="delete-btn"
+                    onClick={() => handleDelete(product.id)}
+                    style={{ minWidth: "70px" }}
+                  >
+                    Delete
+                  </button>
+                </div>
               </td>
             </tr>
           ))}

@@ -3,18 +3,23 @@ import { getProducts } from "../../api/productService";
 import ProductCard from "./ProductCard";
 import "./ProductGrid.css";
 
-function ProductGrid({ title = "Featured Products", limit }) {
+function ProductGrid({ title = "Featured Products", limit, selectedCategory }) {
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
     async function fetchProducts() {
       try {
         const data = await getProducts();
+        let filtered = data;
+
+        if (selectedCategory) {
+          filtered = data.filter((p) => p.category.toLowerCase() === selectedCategory.toLowerCase());
+        }
 
         if (limit) {
-          setProducts(data.slice(0, limit));
+          setProducts(filtered.slice(0, limit));
         } else {
-          setProducts(data);
+          setProducts(filtered);
         }
       } catch (error) {
         console.log(error);
@@ -22,19 +27,23 @@ function ProductGrid({ title = "Featured Products", limit }) {
     }
 
     fetchProducts();
-  }, [limit]);
+  }, [limit, selectedCategory]);
 
   return (
     <section className="product-grid-section">
-      <h2>{title}</h2>
+      <h2>{title} {selectedCategory && `- ${selectedCategory}`}</h2>
 
       <div className="product-grid">
-        {products.map((product) => (
-          <ProductCard
-            key={product.id}
-            product={product}
-          />
-        ))}
+        {products.length > 0 ? (
+          products.map((product) => (
+            <ProductCard
+              key={product.id}
+              product={product}
+            />
+          ))
+        ) : (
+          <p>No products found in this category.</p>
+        )}
       </div>
     </section>
   );

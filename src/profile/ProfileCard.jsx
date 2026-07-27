@@ -6,42 +6,63 @@ import "./ProfileCard.css";
 
 function ProfileCard() {
   const navigate = useNavigate();
-
   const { user, login } = useAuth();
 
-  const names = user.name.split(" ");
+  const [loading, setLoading] = useState(false);
+
+  const names = (user?.name || "").split(" ");
 
   const [formData, setFormData] = useState({
     firstName: names[0] || "",
-    lastName: names.slice(1).join(" ") || "",
-    email: user.email,
-    phone: user.phone,
-    city: user.city || "",
+    lastName: names.slice(1).join(" "),
+    email: user?.email || "",
+    phone: user?.phone || "",
+    city: user?.city || "",
   });
 
+  if (!user) {
+    return (
+      <div className="profile-container">
+        <h2>User not found.</h2>
+      </div>
+    );
+  }
+
   const handleChange = (e) => {
-    setFormData({
-      ...formData,
+    setFormData((prev) => ({
+      ...prev,
       [e.target.name]: e.target.value,
-    });
+    }));
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const updatedUser = {
-      ...user,
-      name: `${formData.firstName} ${formData.lastName}`,
-      email: formData.email,
-      phone: formData.phone,
-      city: formData.city,
-    };
+    setLoading(true);
 
-    const response = await api.put(`/users/${user.id}`, updatedUser);
+    try {
+      const updatedUser = {
+        ...user,
+        name: `${formData.firstName} ${formData.lastName}`.trim(),
+        email: formData.email,
+        phone: formData.phone,
+        city: formData.city,
+      };
 
-    login(response.data);
+      const response = await api.put(
+        `/users/${user.id}`,
+        updatedUser
+      );
 
-    alert("Profile Updated Successfully!");
+      login(response.data);
+
+      alert("Profile updated successfully!");
+    } catch (error) {
+      console.error(error);
+      alert("Failed to update profile.");
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -57,9 +78,14 @@ function ProfileCard() {
       <div className="profile-header">
 
         <img
-          src={user.avatar}
-          alt={user.name}
           className="profile-avatar"
+          src={
+            user.avatar ||
+            `https://ui-avatars.com/api/?background=0D8ABC&color=fff&name=${encodeURIComponent(
+              user.name
+            )}`
+          }
+          alt={user.name}
         />
 
         <div>
@@ -69,19 +95,7 @@ function ProfileCard() {
 
       </div>
 
-      <div className="profile-stats">
 
-        <div className="stat-card">
-          <h2>12</h2>
-          <p>Orders</p>
-        </div>
-
-        <div className="stat-card">
-          <h2>8</h2>
-          <p>Wishlist</p>
-        </div>
-
-      </div>
 
       <form
         className="profile-form"
@@ -160,10 +174,11 @@ function ProfileCard() {
         </div>
 
         <button
-          className="save-btn"
           type="submit"
+          className="save-btn"
+          disabled={loading}
         >
-          Save Changes
+          {loading ? "Saving..." : "Save Changes"}
         </button>
 
       </form>

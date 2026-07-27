@@ -1,12 +1,10 @@
 import Sidebar from "../components/admin/Sidebar";
 import DashboardCards from "../components/admin/DashboardCards";
 import "./Dashboard.css";
-import Navbar from "../components/common/Navbar";
 
 function Dashboard() {
   return (
     <>
-      <Navbar />
       <div className="dashboard">
         <Sidebar />
 

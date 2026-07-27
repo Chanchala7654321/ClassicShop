@@ -26,10 +26,16 @@ function Hero() {
       setCurrentSlide((prev) =>
         prev === slides.length - 1 ? 0 : prev + 1
       );
-    }, 3000);
+    }, 4000);
 
     return () => clearInterval(timer);
   }, [slides]);
+
+  if (slides.length === 0) {
+    return <h2>Loading...</h2>;
+  }
+
+  const slide = slides[currentSlide];
 
   const nextSlide = () => {
     setCurrentSlide((prev) =>
@@ -43,47 +49,35 @@ function Hero() {
     );
   };
 
-  if (slides.length === 0) {
-    return <h2>Loading...</h2>;
-  }
-
-  const slide = slides[currentSlide];
-
   return (
-    <section className="hero">
+    <section
+      className="hero"
+      style={{
+        backgroundImage: `url(${slide.image})`,
+      }}
+    >
+      <div className="overlay"></div>
 
       <button className="arrow left" onClick={prevSlide}>
         ❮
       </button>
 
       <div className="hero-content">
+        <span className="badge">{slide.badge}</span>
 
-        <div className="hero-text">
+        <h1>{slide.title}</h1>
 
-          <span className="badge">
-            {slide.badge}
-          </span>
+        <p>{slide.description}</p>
 
-          <h1>{slide.title}</h1>
+        <div className="hero-buttons">
+          <button className="primary-btn">
+            {slide.button1}
+          </button>
 
-          <p>{slide.description}</p>
-
-          <div className="hero-buttons">
-            <button className="primary-btn">
-              {slide.button1}
-            </button>
-
-            <button className="secondary-btn">
-              {slide.button2}
-            </button>
-          </div>
-
+          <button className="secondary-btn">
+            {slide.button2}
+          </button>
         </div>
-
-        <div className="hero-image">
-          <img src={slide.image} alt={slide.title} />
-        </div>
-
       </div>
 
       <button className="arrow right" onClick={nextSlide}>
@@ -96,10 +90,9 @@ function Hero() {
             key={index}
             className={currentSlide === index ? "active" : ""}
             onClick={() => setCurrentSlide(index)}
-          />
+          ></span>
         ))}
       </div>
-
     </section>
   );
 }
